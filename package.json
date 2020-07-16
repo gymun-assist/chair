@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "deploy": "ng build --prod --base-href=/chair/",
+    "build-prod": "ng build --prod --base-href=/chair/",
+    "deploy-github": "ngh --dir=dist/chair",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
