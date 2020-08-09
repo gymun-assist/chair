@@ -1,1 +1,9 @@
-<img src="../../../../../assets/img/medium/logo.png" alt="">
+<div class="app-header">
+  <img class="app-header__logo" src="../../../../../assets/img/medium/logo.png" alt="">
+  <div class="app-header__nav-bar">
+    <div class="app-header__nav-bar-item"
+         *ngFor="let link of this.links">
+      {{link.caption}}
+    </div>
+  </div>
+</div>

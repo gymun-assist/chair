@@ -1,0 +1,20 @@
+@import "src/assets/themes/styles.scss";
+.app-header {
+
+  display: flex;
+
+  &__logo {
+    $size: 120px;
+    width: $size;
+    height: $size;
+  }
+
+  &__nav-bar {
+    display: flex;
+    background-color: $primary-dark;
+
+    &-item {
+      padding: 15px 40px;
+    }
+  }
+}
