@@ -13,6 +13,22 @@ const routes: Routes = [
     path: 'caucus',
     loadChildren: () => import('./modules/caucus/caucus.module').then(module => module.CaucusModule)
   },
+  {
+    path: 'point',
+    loadChildren: () => import('./modules/point/point.module').then(module => module.PointModule)
+  },
+  {
+    path: 'resolution',
+    loadChildren: () => import('./modules/resolution/resolution.module').then(module => module.ResolutionModule)
+  },
+  {
+    path: 'statistics',
+    loadChildren: () => import('./modules/statistics/statistics.module').then(module => module.StatisticsModule)
+  },
+  {
+    path: 'timetable',
+    loadChildren: () => import('./modules/timetable/timetable.module').then(module => module.TimetableModule)
+  },
   {path: '**', component: MainComponent}
 ];
 
