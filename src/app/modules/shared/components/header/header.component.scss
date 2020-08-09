@@ -1,20 +1,52 @@
 @import "src/assets/themes/styles.scss";
+
 .app-header {
 
   display: flex;
 
   &__logo {
-    $size: 120px;
-    width: $size;
-    height: $size;
+    $logo-size: 120px;
+    width: $logo-size;
+    height: $logo-size;
+    margin-right: 50px;
   }
 
   &__nav-bar {
     display: flex;
-    background-color: $primary-dark;
+    background-color: $background-primary-dark;
+    border-radius: 15px;
+    padding: 10px 0;
+    height: fit-content;
+    margin: auto 0;
+    width: 100%;
 
     &-item {
-      padding: 15px 40px;
+      padding: 12px 40px;
+      color: $text-primary-light;
+      border-color: $border-primary-light;
+      border-style: solid;
+      border-width: 0 1px;
+      white-space: nowrap;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 23px;
+      text-align: center;
+
+      &:first-of-type {
+        border-left-width: 0;
+      }
+
+      &:last-of-type {
+        border-right-width: 0;
+      }
+    }
+
+    &-user {
+      $user-size: 40px;
+      width: $user-size;
+      height: $user-size;
+      margin: auto 18px auto auto;
     }
   }
 }
