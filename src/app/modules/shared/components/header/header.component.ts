@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component} from "@angular/core";
 import {NavigationItemModel} from "../../../../models/navigation-item.model";
 import {RoutingConstants} from "../../../../constants/routing.constants";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,9 @@ import {RoutingConstants} from "../../../../constants/routing.constants";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
+
+  constructor(private router: Router) {
+  }
 
   public links: NavigationItemModel[] = [
     {caption: "Roll Call", path: RoutingConstants.ROLL_CALL},
@@ -19,4 +23,7 @@ export class HeaderComponent {
     {caption: "Timetable", path: RoutingConstants.TIMETABLE},
   ];
 
+  navigate(path?: string) {
+    this.router.navigate([path || '']);
+  }
 }
