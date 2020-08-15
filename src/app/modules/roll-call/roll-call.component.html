@@ -1,1 +1,6 @@
 <h1>Roll Call</h1>
+<div *ngIf="(countries$ | async) as countries">
+  <div *ngFor="let country of countries">
+    {{country}}
+  </div>
+</div>
