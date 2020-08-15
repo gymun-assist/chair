@@ -1,6 +1,7 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
 import {CaucusComponent} from "./caucus.component";
+import {SharedModule} from "../shared/shared.module";
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [CaucusComponent],
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule,
   ]
 })
 export class CaucusModule {

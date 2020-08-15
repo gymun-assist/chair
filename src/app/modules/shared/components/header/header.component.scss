@@ -1,0 +1,100 @@
+@import "src/assets/themes/styles.scss";
+
+.app-header {
+
+  display: flex;
+
+  &__logo {
+    cursor: pointer;
+    $logo-size: 120px;
+    width: $logo-size;
+    height: $logo-size;
+    margin-right: 50px;
+  }
+
+  &__nav-bar {
+    display: flex;
+    background-color: $background-primary-dark;
+    border-radius: 15px;
+    padding: 5px 0;
+    height: fit-content;
+    margin: auto 0;
+    width: 100%;
+    position: relative;
+
+    &._user-expanded {
+      border-bottom-right-radius: 0;
+    }
+
+    &-item {
+      color: $text-primary-light;
+      display: flex;
+      white-space: nowrap;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 23px;
+      text-align: center;
+      cursor: pointer;
+
+      &:first-of-type {
+        border-left-width: 0;
+      }
+
+      &:last-of-type {
+        border-right-width: 0;
+      }
+
+      &__text {
+        padding: 12px 30px;
+        margin: 0 10px;
+
+        &._selected {
+          background-color: $background-primary-light;
+          color: $text-primary-dark;
+          border-radius: 10px;
+        }
+      }
+
+      &__border {
+        width: 2px;
+        background-color: $border-primary-light;
+        margin: 5px 0;
+      }
+    }
+
+    &-user {
+      $user-size: 40px;
+      width: $user-size;
+      height: $user-size;
+      margin: auto 18px auto auto;
+      cursor: pointer;
+    }
+  }
+
+  &__user-info {
+    width: fit-content;
+    margin-left: auto;
+    background-color: $background-primary-dark;
+    color: $text-primary-light;
+    position: absolute;
+    right: 0;
+    top: 55px;
+    border-radius: 0 0 15px 15px;
+    padding: 12px 15px;
+    font-size: 15px;
+    min-width: 230px;
+
+    &__name {
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    &__logout {
+      width: 24px;
+      display: block;
+      margin-left: auto;
+      cursor: pointer;
+    }
+  }
+}
