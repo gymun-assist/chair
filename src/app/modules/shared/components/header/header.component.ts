@@ -3,6 +3,10 @@ import {NavigationItemModel} from "../../../../models/navigation-item.model";
 import {RoutingConstants} from "../../../../constants/routing.constants";
 import {NavigationStart, Router} from "@angular/router";
 import {filter, take} from "rxjs/operators";
+import {Select} from "@ngxs/store";
+import {Observable} from "rxjs";
+import {RootSelectors} from "../../../../core/state/root.selectors";
+import {UserModel} from "../../../../models/user.model";
 
 @Component({
   selector: 'app-header',
@@ -20,6 +24,8 @@ export class HeaderComponent implements OnInit {
     {caption: "Statistics", path: RoutingConstants.STATISTICS},
     {caption: "Timetable", path: RoutingConstants.TIMETABLE},
   ];
+
+  @Select(RootSelectors.user) user$: Observable<UserModel>;
 
   isUserInfoExpanded: boolean = false;
 
