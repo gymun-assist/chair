@@ -1,7 +1,7 @@
 <div class="app-header">
   <img (click)="navigate()" class="app-header__logo" src="assets/img/medium/logo.png" alt="">
   <div class="app-header__nav-bar"
-       [ngClass]="{'_user-expanded': this.isUserInfoExpanded}">
+       [ngClass]="{'_user-expanded': this.isUserInfoExpanded && !!(this.user$ | async)}">
     <div class="app-header__nav-bar-item"
          (click)="navigate(link)"
          *ngFor="let link of this.links; let index = index">
@@ -13,9 +13,9 @@
     </div>
     <img class="app-header__nav-bar-user" src="assets/img/user.svg" alt=""
          (click)="this.isUserInfoExpanded = !this.isUserInfoExpanded">
-    <div *ngIf="isUserInfoExpanded" class="app-header__user-info">
-      <div class="app-header__user-info__name">Uladzislau Dzemiantsei</div>
-      <div>EcoFin chair</div>
+    <div *ngIf="isUserInfoExpanded && (this.user$ | async) as user" class="app-header__user-info">
+      <div class="app-header__user-info__name">{{user.name + ' ' + user.surname}}</div>
+      <div>{{user.position}}</div>
       <img class="app-header__user-info__logout" src="assets/img/logout.svg" alt=""
            (click)="logout()">
     </div>

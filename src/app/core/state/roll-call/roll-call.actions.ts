@@ -1,5 +1,7 @@
-export class SetCountries {
-  static readonly type = '[RollCall] set countries';
-  constructor(public countries: string[]) {
+import {CountryModel} from "../../../models/country.model";
+
+export class SetPresentCountries {
+  static readonly type = '[RollCall] Set present countries';
+  constructor(public countries: CountryModel[]) {
   }
 }

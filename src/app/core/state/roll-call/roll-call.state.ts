@@ -1,13 +1,14 @@
 import {Action, State, StateContext, Store} from "@ngxs/store";
 import {Injectable} from "@angular/core";
-import {SetCountries} from "./roll-call.actions";
+import {SetPresentCountries} from "./roll-call.actions";
+import {CountryModel} from "../../../models/country.model";
 
 export interface RollCallStateModel {
-  countries: string[];
+  presentCountries: CountryModel[];
 }
 
 export const defaultRollCallState: RollCallStateModel = {
-  countries: ['Spain', 'Denmark'],
+  presentCountries: [{name: 'Spain'}, {name: 'Denmark'}],
 }
 
 @State<RollCallStateModel>({
@@ -20,9 +21,9 @@ export class RollCallState {
   constructor(private store: Store) {
   }
 
-  @Action(SetCountries)
-  setCountries(ctx: StateContext<RollCallStateModel>, action: SetCountries) {
-    ctx.patchState({countries: action.countries});
+  @Action(SetPresentCountries)
+  setCountries(ctx: StateContext<RollCallStateModel>, action: SetPresentCountries) {
+    ctx.patchState({presentCountries: action.countries});
   }
 
 }

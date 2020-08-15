@@ -1,16 +1,17 @@
 import {Action, NgxsOnInit, State, StateContext, Store} from "@ngxs/store";
 import {Injectable} from "@angular/core";
-import {LogIn} from "./root.actions";
+import {SetUser} from "./root.actions";
 import {RollCallState} from "./roll-call/roll-call.state";
+import {UserModel} from "../../models/user.model";
 
 export interface RootStateModel {
-  user: string;
+  user: UserModel;
 }
 
 @State<RootStateModel>({
   name: 'root',
   defaults: {
-    user: 'Uladzislau Dzemiantsei',
+    user: null,
   },
   children: [RollCallState]
 })
@@ -24,10 +25,10 @@ export class RootState implements NgxsOnInit {
     //add callbacks and request
   }
 
-  @Action(LogIn)
-  logIn(ctx: StateContext<RootStateModel>, action: LogIn): void {
-    if (!ctx.getState().user) {
-      ctx.patchState({user: action.user});
-    }
+  @Action(SetUser)
+  logIn(ctx: StateContext<RootStateModel>, action: SetUser): void {
+    //if (!ctx.getState().user) {
+    ctx.patchState({user: action.user});
+    //}
   }
 }
