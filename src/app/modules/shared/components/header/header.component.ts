@@ -1,7 +1,8 @@
-import {ChangeDetectionStrategy, Component} from "@angular/core";
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from "@angular/core";
 import {NavigationItemModel} from "../../../../models/navigation-item.model";
 import {RoutingConstants} from "../../../../constants/routing.constants";
-import {Router} from "@angular/router";
+import {NavigationStart, Router} from "@angular/router";
+import {filter, take} from "rxjs/operators";
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent {
-
-  constructor(private router: Router) {
-  }
+export class HeaderComponent implements OnInit {
 
   public links: NavigationItemModel[] = [
     {caption: "Roll Call", path: RoutingConstants.ROLL_CALL},
@@ -23,7 +21,30 @@ export class HeaderComponent {
     {caption: "Timetable", path: RoutingConstants.TIMETABLE},
   ];
 
-  navigate(path?: string) {
-    this.router.navigate([path || '']);
+  constructor(private router: Router,
+              private cdr: ChangeDetectorRef) {
+  }
+
+  ngOnInit(): void {
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationStart),
+        take(1)
+      )
+      .subscribe((event: NavigationStart) => {
+        const navigatedPage: NavigationItemModel = this.links.find(elem => event.url.includes(elem.path));
+        if (navigatedPage) {
+          navigatedPage.selected = true;
+          this.cdr.detectChanges();
+        }
+      });
+  }
+
+  navigate(link?: NavigationItemModel) {
+    this.links.forEach(elem => elem.selected = false);
+    if (link) {
+      link.selected = true;
+    }
+    this.router.navigate([link?.path || '']);
   }
 }

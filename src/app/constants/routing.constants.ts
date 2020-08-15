@@ -5,5 +5,5 @@ export enum RoutingConstants {
   POINT = 'point',
   RESOLUTION = 'resolution',
   STATISTICS = 'statistics',
-  TIMETABLE = '',
+  TIMETABLE = 'timetable',
 }
