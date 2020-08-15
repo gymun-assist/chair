@@ -1,6 +1,7 @@
 <div class="app-header">
   <img (click)="navigate()" class="app-header__logo" src="assets/img/medium/logo.png" alt="">
-  <div class="app-header__nav-bar">
+  <div class="app-header__nav-bar"
+       [ngClass]="{'_user-expanded': this.isUserInfoExpanded}">
     <div class="app-header__nav-bar-item"
          (click)="navigate(link)"
          *ngFor="let link of this.links; let index = index">
@@ -10,6 +11,13 @@
       </div>
       <div *ngIf="index !== (this.links.length - 1)" class="app-header__nav-bar-item__border"></div>
     </div>
-    <img class="app-header__nav-bar-user" src="assets/img/user.png" alt="">
+    <img class="app-header__nav-bar-user" src="assets/img/user.svg" alt=""
+         (click)="this.isUserInfoExpanded = !this.isUserInfoExpanded">
+    <div *ngIf="isUserInfoExpanded" class="app-header__user-info">
+      <div class="app-header__user-info__name">Uladzislau Dzemiantsei</div>
+      <div>EcoFin chair</div>
+      <img class="app-header__user-info__logout" src="assets/img/logout.svg" alt=""
+           (click)="logout()">
+    </div>
   </div>
 </div>

@@ -12,7 +12,7 @@ import {filter, take} from "rxjs/operators";
 })
 export class HeaderComponent implements OnInit {
 
-  public links: NavigationItemModel[] = [
+  public readonly links: NavigationItemModel[] = [
     {caption: "Roll Call", path: RoutingConstants.ROLL_CALL},
     {caption: "Caucus", path: RoutingConstants.CAUCUS},
     {caption: "Point Discussion", path: RoutingConstants.POINT},
@@ -20,6 +20,8 @@ export class HeaderComponent implements OnInit {
     {caption: "Statistics", path: RoutingConstants.STATISTICS},
     {caption: "Timetable", path: RoutingConstants.TIMETABLE},
   ];
+
+  isUserInfoExpanded: boolean = false;
 
   constructor(private router: Router,
               private cdr: ChangeDetectorRef) {
@@ -40,11 +42,15 @@ export class HeaderComponent implements OnInit {
       });
   }
 
-  navigate(link?: NavigationItemModel) {
+  navigate(link?: NavigationItemModel): void {
     this.links.forEach(elem => elem.selected = false);
     if (link) {
       link.selected = true;
     }
     this.router.navigate([link?.path || '']);
+  }
+
+  logout(): void {
+    //TODO add implementation
   }
 }
