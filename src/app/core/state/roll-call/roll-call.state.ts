@@ -8,7 +8,15 @@ export interface RollCallStateModel {
 }
 
 export const defaultRollCallState: RollCallStateModel = {
-  presentCountries: [{name: 'Spain'}, {name: 'Denmark'}],
+  presentCountries: [
+    {name: 'Germany'}, {name: 'United Arab Emirates'}, {name: 'Germany'}, {name: 'Germany'},
+    {name: 'Germany'}, {name: 'Germany'}, {name: 'Germany'}, {name: 'Germany'},
+    {name: 'Germany'}, {name: 'Germany'}, {name: 'Germany'}, {name: 'Germany'},
+    {name: 'Germany'}, {name: 'Germany'}, {name: 'Germany'}, {name: 'Germany'},
+    {name: 'Germany'}, {name: 'Germany'}, {name: 'Germany'}, {name: 'Germany'},
+    {name: 'Germany'}, {name: 'Germany'}, {name: 'Germany'}, {name: 'Germany'},
+    {name: 'Germany'}, {name: 'Germany'}, {name: 'Germany'}, {name: 'Germany'},
+  ],
 }
 
 @State<RollCallStateModel>({
