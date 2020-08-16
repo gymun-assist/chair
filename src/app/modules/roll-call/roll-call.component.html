@@ -1,6 +1,61 @@
-<h1>Roll Call</h1>
-<div *ngIf="(presentCountries$ | async) as countries">
-  <div *ngFor="let country of countries">
-    {{country.name}}
+<div class="roll-call">
+  <div class="roll-call__header d-flex">
+    <div class="roll-call__header__statistics d-flex">
+      <div class="roll-call__header__statistics-title">Voting Majorities</div>
+
+      <div class="roll-call__header__statistics-presence">
+        <div class="circle _full"></div>
+        <div>120</div>
+      </div>
+
+      <div class="roll-call__header__statistics-presence">
+        <div class="circle _half"></div>
+        <div>60</div>
+      </div>
+
+      <div class="roll-call__header__statistics-presence">
+        <div class="circle _two-third"></div>
+        <div>80</div>
+      </div>
+    </div>
+
+    <div class="roll-call__header__actions">
+      <div class="roll-call__header__actions-new"
+           (click)="newRollCall()">
+        Start new Roll Call
+      </div>
+      <div class="roll-call__header__actions-edit" (click)="edit()">
+        <img class="app-header__user-info__logout" src="assets/img/edit.svg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="roll-call__content">
+    <div *ngIf="(presentCountries$ | async) as countries"
+         class="roll-call__content__block">
+      <div class="roll-call__content__block-title">Present</div>
+      <div class="roll-call__content__block-countries d-flex">
+        <div class="roll-call__content__block-countries_country" *ngFor="let country of countries">
+          <div class="roll-call__content__block-countries_country-flag">
+            <img [src]="'assets/img/small/' + country.imageName + '.jpg'" alt="UN">
+          </div>
+          <div>{{country.name}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="(presentCountries$ | async) as countries"
+         class="roll-call__content__block">
+      <div class="roll-call__content__block-title">Absent</div>
+      <div class="roll-call__content__block-countries d-flex">
+        <div class="roll-call__content__block-countries_country" *ngFor="let country of countries">
+          <div class="roll-call__content__block-countries_country-flag">
+            <img [src]="'assets/img/small/' + country.imageName + '.jpg'" alt="UN">
+          </div>
+          <div>{{country.name}}</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+

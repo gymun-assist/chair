@@ -1,3 +1,12 @@
 .app {
-  padding: 30px 30px 0;
+  padding: 5px 30px 0 20px;
+  height: calc(100% - 5px);
+  min-width: 1260px;
+
+  &__content {
+    margin-top: 15px;
+    margin-left: 132px;
+    height: calc(100% - 106px);//header-height + margin-top
+    overflow-y: auto;
+  }
 }

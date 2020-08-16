@@ -16,7 +16,7 @@ export class RollCallComponent {
   @Select(RollCallSelectors.presentCountries) presentCountries$: Observable<CountryModel[]>;
 
   constructor(private store: Store) {
-    setTimeout(() => this.setCountries(), 5000);
+    //setTimeout(() => this.setCountries(), 5000);
   }
 
   private setCountries() {
@@ -24,5 +24,13 @@ export class RollCallComponent {
       .subscribe(() => {
         console.log(this.store.selectSnapshot<CountryModel[]>(state => state.root.rollCall.presentCountries));
       });
+  }
+
+  edit(): void {
+    console.log('edit');
+  }
+
+  newRollCall(): void {
+    console.log('start new roll call')
   }
 }
